@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Cifrario - Horas Sociales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333; /* Color de texto principal (gris oscuro) */
+            background-color: #f4f4f4; /* Fondo suave para el cuerpo del correo */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff; /* Fondo blanco para el contenido principal */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            border-top: 5px solid #28a745; /* Línea verde arriba (color de éxito/cifrario) */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px; /* Tamaño máximo para el logo */
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .header h2 {
+            color: #1a5e3a; /* Un verde más oscuro para los encabezados */
+            margin-top: 0;
+        }
+        .credentials-box {
+            background-color: #e6ffe6; /* Fondo muy claro para las credenciales */
+            border: 1px solid #c3e6cb; /* Borde suave */
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .credentials-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .credentials-box li {
+            margin-bottom: 8px;
+        }
+        .credentials-box strong {
+            color: #1a5e3a; /* Color para los labels de Usuario/Contraseña */
+        }
+        .button {
+            display: inline-block;
+            background-color: #28a745; /* Un verde vibrante para el botón */
+            color: #ffffff !important; /* Texto blanco en el botón */
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777777; /* Gris para el texto del pie de página */
+            border-top: 1px solid #eeeeee; /* Línea fina arriba del pie de página */
+            padding-top: 20px;
+        }
+        a {
+            color: #28a745; /* Color de enlace general */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {% if institucion.logo_escudo %}
+                <img src="{{ institucion.logo_escudo.url }}" alt="{{ institucion.nombre }} Logo">
+            {% else %}
+                <h1>Cifrario</h1>
+            {% endif %}
+            <h2>👋 Hola {{ estudiante.primer_nombre }} {{ estudiante.primer_apellido }},</h2>
+        </div>
+
+        <p>¡Bienvenido al sistema de <strong>Horas Sociales - Cifrario</strong>!</p>
+
+        <p>Se ha creado tu cuenta. Aquí tienes tus credenciales:</p>
+
+        <div class="credentials-box">
+            <ul>
+                <li><strong>Usuario:</strong> {{ username }}</li>
+                <li><strong>Contraseña:</strong> {{ password }}</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px;">
+            <a href="http://localhost:8000/api/token" class="button">Ingresar al Sistema</a>
+        </p>
+
+        <!--
+        <p style="color: #555; text-align: center; font-size: 0.9em;">
+            Te recomendamos encarecidamente cambiar tu contraseña tras iniciar sesión.
+        </p>
+        -->
+
+        <div class="footer">
+            <p>Atentamente,<br><strong>Equipo Cifrario</strong></p>
+            <p>&copy; {% now "Y" %} Cifrario. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

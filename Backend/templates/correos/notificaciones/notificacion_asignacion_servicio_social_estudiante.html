@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Asignación de Servicio Social - Cifrario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #28a745;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .header h2 {
+            color: #1a5e3a;
+            margin-top: 0;
+        }
+        .info-box {
+            background-color: #e6ffe6;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        .info-box strong {
+            color: #1a5e3a;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777777;
+            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {% if institucion.logo_escudo %}
+                <img src="{{ institucion.logo_escudo.url }}" alt="{{ institucion.nombre }} Logo">
+            {% else %}
+                <h1>Cifrario</h1>
+            {% endif %}
+            <h2>👋 Hola {{ usuario.primer_nombre }} {{ usuario.primer_apellido }},</h2>
+        </div>
+
+        <p>{{ mensaje }}</p>
+
+        <div class="info-box">
+            <h3 style="color: #1a5e3a; margin-top: 0;">Detalles del Servicio Social:</h3>
+            <ul>
+                <li><strong>Entidad:</strong> {{ servicio_social.entidad.nombre }}</li>
+                <li><strong>Proyecto:</strong> {{ servicio_social.nombre }}</li>
+                <li><strong>Supervisor:</strong> {{ servicio_social.supervisor }}</li>
+                <li><strong>Horas requeridas:</strong> {{ servicio_social.horas_sociales }}</li>
+                <li><strong>Fecha de inicio:</strong> {{ servicio_social.fecha_inicio }}</li>
+                <li><strong>Fecha de culminación:</strong> {{ servicio_social.fecha_culminacion }}</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3 style="color: #1a5e3a; margin-top: 0;">Datos de contacto de la entidad:</h3>
+            <ul>
+                <li><strong>NIT:</strong> {{ servicio_social.entidad.nit }}</li>
+                <li><strong>Nombre de la entidad:</strong> {{ servicio_social.entidad.nombre }}</li>
+                <li><strong>Teléfono:</strong> {{ servicio_social.entidad.telefono }}</li>
+                <li><strong>Correo:</strong> {{ servicio_social.entidad.correo }}</li>
+            </ul>
+        </div>
+
+        <p style="color: #555; text-align: center; font-size: 0.9em;">
+            Por favor, ponte en contacto con tu supervisor para recibir más información sobre tus responsabilidades y horarios.
+        </p>
+
+        <div class="footer">
+            <p>Atentamente,<br><strong>Equipo Cifrario</strong></p>
+            <p>Este es un correo automático, por favor no responder.</p>
+            <p>&copy; {% now "Y" %} Cifrario. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

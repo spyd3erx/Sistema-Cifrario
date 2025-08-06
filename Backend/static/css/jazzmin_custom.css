@@ -1,0 +1,26 @@
+/* tu_proyecto/static/css/custom_jazzmin.css */
+
+/* Estilo para el fondo del alert de éxito */
+.alert.alert-success {
+    background-color: #87ceeb;
+    border-color: #87ceeb;
+    color: #333;
+}
+
+/* Opcional: Si quieres cambiar el color del botón de cierre (la "x") */
+.alert.alert-success .close {
+    color: white;
+    opacity: 0.8;
+}
+
+/* Opcional: Hover para el botón de cierre */
+.alert.alert-success .close:hover {
+    color: white;
+    opacity: 1;
+}
+
+/* Si hay un enlace dentro del alert (por ejemplo, "Ver sitio" después de guardar) */
+.alert.alert-success a {
+    color: #e0e0e0; /* Un gris claro para enlaces sobre fondo oscuro */
+    text-decoration: underline;
+}
